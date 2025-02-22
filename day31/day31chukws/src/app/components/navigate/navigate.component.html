@@ -1,0 +1,21 @@
+<p>navigate works!</p>
+
+<button (click)="prev()"> Prev</button>
+
+<button (click)="next()"> Next</button>
+
+{{currentNumber}}
+
+<ol>
+@for (n of offset;track $index) {
+   
+}
+</ol>
+
+<select (change)="myFunction($event)">
+    @for (n of offset;track $index) {
+   <option value = {{n}}> {{n}}</option>
+    }
+
+
+</select>

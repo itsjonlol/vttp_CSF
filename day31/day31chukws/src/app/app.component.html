@@ -1,0 +1,11 @@
+{{currentIndex}}
+
+
+<app-display [displayNumber]="currentIndex" ></app-display>
+
+
+
+
+
+<app-navigate [currentNumber]="currentIndex" (onNextNumber)="handleNext($event)"></app-navigate>
+

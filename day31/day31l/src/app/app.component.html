@@ -1,0 +1,37 @@
+
+<h1> {{title}} {{allClicks}}</h1>
+
+
+@if (texts.length>0) {
+  @for ( t of texts; let idx=$index; track t) {
+    <app-text [text]="t" (totalClicks)="whenTotalClicks(idx,$event)"></app-text>
+  
+  }
+} @else {
+  <p> no phrases to display</p>
+}
+
+
+
+<app-text [text]="title"></app-text>
+<app-text [text]="'hello world, not from parent'"></app-text>
+
+<app-text text="hello world,not binded"></app-text>
+<app-text text="{{title}}"></app-text>
+
+
+
+<ol>
+@for ( t of texts; let idx=$index; track t) {
+ <li>
+  <app-text [text]="idx + ':' + t"></app-text>
+ </li> 
+
+}
+
+</ol>
+
+
+<app-text-input (onNewText)="whenNewText($event)"></app-text-input>
+
+

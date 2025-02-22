@@ -1,0 +1,25 @@
+<div class="container">
+  <h1> Day 31 Workshop</h1>
+
+  <div class="row">
+   
+    <div class="col-md-6 col-sm-12">
+      @for (fruit of fruits; let idx = $index; track fruit.id) {
+        <app-displayfruit [invFruit]="fruit" (changeQty)="handleDeltaQty($event)"></app-displayfruit>
+      }
+    </div>
+
+   
+    <div class="col-md-6 col-sm-12">
+      <app-cartcheckout [cartItems]="cartItems" (formSubmitted)="resetCart($event)"></app-cartcheckout>
+    </div>
+  </div>
+</div>
+
+
+<pre>{{cartItems | json}}</pre>
+
+
+
+
+

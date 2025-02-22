@@ -1,0 +1,91 @@
+
+{{values  | json}}
+
+<form [formGroup]="form">
+    {{form.value | json}}
+    
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" formControlName="name" 
+                [ngClass]="{ 'valid': isCtrlValid('name'), 'invalid': isCtrlInvalid('name') }"> </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" formControlName="address"
+                [ngClass]="{ 'valid': isCtrlValid('address'), 'invalid': isCtrlInvalid('address') }"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" formControlName="email"
+                [ngClass]="{ 'valid': isCtrlValid('email'), 'invalid': isCtrlInvalid('email') }"></td>
+        </tr>
+        <tr>
+            <td>Delivery date</td>
+            <td><input type="date" formControlName="deliveryDate"
+                [ngClass]="{ 'valid': isCtrlValid('deliveryDate'), 'invalid': isCtrlInvalid('deliveryDate') }"></td>
+        </tr>
+        @if (!isAvailableDisabled) {
+            <tr>
+                <td>Availability</td>
+                <fieldset >
+                <div>
+                    <td><input type="radio"  [value]="firstSlot" formControlName="availability" ></td>
+                    <td><label>0900 - 1200</label></td>
+                 </div>
+                 <div>
+                    <td><input type="radio"  [value]="secondSlot" formControlName="availability"></td>
+                    <td><label>1200 - 1600</label></td>
+                 </div>
+                 <div>
+                    <td><input type="radio" value="1600 - 2000" formControlName="availability"></td>
+                    <td><label>1600 - 2000</label></td>
+                 </div>
+                </fieldset>
+            </tr>
+        }
+        
+        <tr>
+            <td>Urgent</td>
+            <td><input type="checkbox" formControlName="urgent" (change)="checkIfTrue($event)"></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" [disabled]="isInvalid()" (click) = "onProcessForm()">Submit order</button>
+                <button type="button" (click)="addLineItem()">Add line items</button>
+            </td>
+        </tr>
+
+
+
+    </table>
+
+    <h2>Line Items</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Qty</th>
+                <th>Unit Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody formArrayName="lineItems">
+            @for ( col of lineItems.controls;let idx = $index; track col) {
+                <tr [formGroupName]="idx">
+                    <td><input type="text" formControlName="itemName"></td>
+                    <td><input type="text" formControlName="qty"></td>
+                    <td><input type="text" formControlName="unitPrice"></td>
+                    <td><button type="button" (click)="removeLineItem(idx)">Remove item</button></td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+
+
+
+
+
+</form>

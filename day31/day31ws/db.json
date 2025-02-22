@@ -1,0 +1,42 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Broccoli",
+        "image": "/images/broccoli.png",
+        "price": 0.50,
+        "qty":0
+      },
+      {
+        "id": 2,
+        "name": "Acorn Squash",
+        "image": "/images/acorn_squash.png",
+        "price": 0.60,
+        "qty":0
+      },
+      {
+        "id": 3,
+        "name": "Apple",
+        "image": "/images/apple.png",
+        "price": 0.40,
+        "qty":0
+    
+      },
+      {
+        "id": 4,
+        "name": "Bell Pepper",
+        "image": "/images/bell_pepper.png",
+        "price": 0.50,
+        "qty":0
+     
+      },
+      {
+        "id":5,
+        "name": "Blueberries",
+        "image": "/images/blueberries.png",
+        "price": 0.70,
+        "qty":0
+
+      }
+    ]
+  }

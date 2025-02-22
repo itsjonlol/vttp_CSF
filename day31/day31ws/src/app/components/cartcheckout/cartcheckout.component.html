@@ -1,0 +1,79 @@
+<h1> CART CHECKOUT </h1>
+
+
+<h2>Form</h2>
+<pre>{{form.value | json}} </pre>
+
+<pre>{{object|json}}</pre>
+
+<form [formGroup]="form" (submit)="processOrder()">
+    
+    <div>
+        <label>Enter name:</label>
+        <br>
+        <input type="text" formControlName="name">
+    </div>
+    <div>
+        <label>Enter address:</label>
+        <br>
+        <input type="text" formControlName="address">
+    </div>
+    <div>
+        <label>urgent</label>
+        <input type="checkbox" formControlName="urgent" (change)="urgentEvent($event)">
+    </div>
+    @if (showDeliverySlots) {
+        <div>
+            <label>am</label>
+            <input type="checkbox" formControlName="am">
+        </div>
+        <div>
+            <label>pm</label>
+            <input type="checkbox" formControlName="pm">
+        </div>
+    }
+    
+
+<h2>Items</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fruit</th>
+            <th>Quantity</th>
+            <th>Individual price</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+            
+        @for (invCartItem of cartItems; let idx = $index; track idx) {
+            
+                
+                <tr>
+                    <td>{{invCartItem.name}}</td>
+                    <td> {{invCartItem.qty}} </td>
+                    <td>{{ invCartItem.invTotalPrice | number: '1.2-2' | currency: 'SGD'}}</td>
+                </tr>
+        
+        } @empty {
+            <tr>
+                <td>Cart currently empty</td>
+            </tr>
+        }
+       
+        <tr>
+            <td>Total price</td>
+            <td></td>
+            <td>{{ totalPrice | number: '1.2-2' | currency: 'SGD'}}</td>
+        </tr>
+
+
+    </tbody>
+
+</table>
+
+<button type="submit"  [disabled]="invalid()" class="btn btn-primary">Submit</button>
+</form>
+<br>
+
+  

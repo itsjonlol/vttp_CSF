@@ -1,0 +1,10 @@
+<h2>{{invFruit.name}}</h2>
+<p> {{invFruit.price | currency: 'SGD' : 'symbol' : '1.2-2' }}</p>
+<img [src]="invFruit.image">
+
+<br>
+<button (click)="decreaseQty()">-</button>
+<button (click)="increaseQty()">+</button>
+
+
+
