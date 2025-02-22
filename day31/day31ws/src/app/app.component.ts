@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     this.fruitService.getFruits().subscribe({
       next: (response: Fruit[]) => {
         this.fruits = response;
+
+        // if want to map directly to a new list of cartitems
         // this.cartItems = this.fruits.map(fruit => ({
         //   name: fruit.name,
         //   qty: fruit.qty,
@@ -35,17 +37,7 @@ export class AppComponent implements OnInit {
 
   handleDeltaQty(event: QuantityDelta) {
     
-    // for ( let i = 0; i<this.fruits.length;i++) {
-
-    //   if (this.fruits[i].name === event.name) {
-    //     console.log(this.fruits[i].name)
-    //     this.fruits[i].qty += event.qty;
-    //     if (this.fruits[i].qty <=0) {
-    //       this.fruits[i].qty = 0
-    //     }
-    //     console.log(this.fruits[i].qty)
-    //   }
-    // }
+    
 
     //update cart
     const cartItem:CartItem = {
@@ -73,25 +65,10 @@ export class AppComponent implements OnInit {
       }
     }
     
-    // this.cartItems.push(cartItem);
-    
-    
-
-    // for ( let i = 0; i<this.cartItems.length;i++) {
-
-    //   if (this.cartItems[i].name === event.name) {
-    //     console.log(this.cartItems[i].name)
-    //     this.cartItems[i].qty += event.qty;
-    //     if (this.cartItems[i].qty <=0) {
-    //       this.cartItems[i].qty = 0
-    //     }
-    //     this.cartItems[i].invTotalPrice = this.cartItems[i].qty* this.fruits[i].price
-    //     console.log(this.cartItems[i].qty)
-    //   }
-    // }
-
+  
   }
   
+  //to reset cart when form submitted
   resetCart(event:boolean) {
     if (event) {
       this.cartItems = []

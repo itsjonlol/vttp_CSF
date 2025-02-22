@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { DisplayfruitComponent } from './components/displayfruit/displayfruit.component';
 
-import { CartComponent } from './components/cart/cart.component';
+
 import { CartcheckoutComponent } from './components/cartcheckout/cartcheckout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -14,7 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     DisplayfruitComponent,
-    CartComponent,
     CartcheckoutComponent
   ],
   imports: [
