@@ -1,0 +1,5 @@
+.completed-task {
+    background-color: pink;
+  text-decoration: line-through; /* Strike-through text for completed tasks */
+}
+

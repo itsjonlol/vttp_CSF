@@ -1,0 +1,43 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Completion status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for(task of tasks; let idx=$index;track idx) {
+                
+                <tr [ngClass]="{'completed-task':task.isCompleted}">
+                    <td> {{task.id}} </td>
+                    <td> {{task.description}} </td>
+                    <td> {{task.priority}} </td>
+                    <td> {{task.due}} </td>
+                    @if (task.isCompleted) {
+                        <td>Y</td>
+                    } @else {<td>N</td>}
+                  
+                    <td>
+                        <button type="button" (click)="markCompleted(task.id)" class="btn btn-primary">Complete task</button>
+    
+                        <button type="button" (click)="deleteTask(task.id)" class="btn btn-warning">Delete</button>
+                        
+                    </td>
+                </tr>
+            
+            
+        } @empty {
+            <tr>
+                <td>No task added</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

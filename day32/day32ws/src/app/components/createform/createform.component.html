@@ -1,0 +1,56 @@
+
+{{form.value | json}}
+
+
+<form [formGroup]="form" (submit)="processForm()">
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td><input type="number" formControlName="id" min="1"></td>
+
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" formControlName="description" [ngClass]="{'is-invalid': hasError('description')}"></td>
+            @if (hasError('description','required')) {<div><p class="text-danger">Description is required!</p></div>}
+            @if (hasError('description','minlength')) {<div><p class="text-danger">Min length of 5</p></div>}
+            
+        </tr>
+        <tr>
+            <td>priority:</td>
+            <div>
+                <td>
+                    <label>High</label>
+                    <input type="radio" value="high" formControlName="priority" >
+                </td>
+            </div>
+            <div>
+                <td>
+                    <label>Med</label>
+                    <input type="radio" value="med" formControlName="priority">
+                </td>
+            </div>
+            <div>
+            <td>
+                <label>Low</label>
+                <input type="radio" value="low" formControlName="priority">
+            </td>
+            </div>
+        </tr>
+        <tr>
+            <td>Due Date</td>
+            <td><input type="date" formControlName="due" [ngClass]="{'is-invalid': hasError('due')}"></td>
+            @if (hasError('due','pastDate')) {<p class="text-danger">No past dates</p>}
+            @if (hasError('due','required')) {<p class="text-danger">Date is required!</p>}
+            
+        </tr>
+        
+    </table>
+
+    <button type="submit" [disabled]="isInvalid()">Submit</button>
+
+
+
+
+</form>
