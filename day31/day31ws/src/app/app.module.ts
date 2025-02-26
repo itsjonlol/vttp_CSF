@@ -9,12 +9,14 @@ import { DisplayfruitComponent } from './components/displayfruit/displayfruit.co
 
 import { CartcheckoutComponent } from './components/cartcheckout/cartcheckout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TestChildComponent } from './components/test-child/test-child.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayfruitComponent,
-    CartcheckoutComponent
+    CartcheckoutComponent,
+    TestChildComponent
   ],
   imports: [
     BrowserModule,

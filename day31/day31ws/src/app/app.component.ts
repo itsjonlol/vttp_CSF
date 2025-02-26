@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   fruits:Fruit[] = []
   cartItems: CartItem[] = []
 
+  testVar:number[] = [];
+
   ngOnInit(): void {
     this.fruitService.getFruits().subscribe({
       next: (response: Fruit[]) => {
@@ -54,7 +56,8 @@ export class AppComponent implements OnInit {
 
     if (index === -1) {
       if (event.qty>0) {
-        this.cartItems.push(cartItem);
+        // this.cartItems.push(cartItem);
+        this.cartItems = [...this.cartItems,cartItem];
       }
       
     } else {
@@ -75,4 +78,11 @@ export class AppComponent implements OnInit {
     }
   }
   
+  testCounter() {
+    // this.testVar.push(1);
+
+    // this works for onchanges()
+    this.testVar=[...this.testVar,1]
+  }
+
 }
