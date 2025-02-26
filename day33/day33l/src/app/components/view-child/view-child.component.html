@@ -1,0 +1,34 @@
+<p>view-child works!</p>
+
+<p> {{childText}} </p>
+
+
+<br>
+<h1>Products</h1>
+
+<pre>{{form.value | json}}</pre>
+<form [formGroup]="form">
+    <table>
+        <thead>
+            <tr>
+                <button (click)="onAddRow()">Add</button>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of dynamicRows.controls;let index = index;"></tr>
+            <td>
+                <label name="name">Name</label>
+                <input formControlName="name">
+            </td>
+            <td>
+                <label name="description"></label>
+                <input formControlName="description">
+            </td>
+            <td>
+                <label name="description"></label>
+                <input formControlName="description">
+            </td>
+        </tbody>
+    </table>
+
+</form>
