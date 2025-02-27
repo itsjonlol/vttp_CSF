@@ -8,11 +8,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './material/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Vc2Component } from './components/vc2/vc2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewChildComponent
+    ViewChildComponent,
+    Vc2Component
   ],
   imports: [
     BrowserModule,

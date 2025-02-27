@@ -2,10 +2,19 @@
 
 <button type="button" mat-stroked-button (click)="changeChildText()"> Change ViewChild Text</button>
 
-<app-view-child></app-view-child>
+<!-- <app-view-child></app-view-child> -->
 
 @if (isShow) {
     <img width="30%" height="30%" #mgImg src="https://picsum.photos/200/300"> 
 }
+
+<button (click)="inc()">Increase</button>
+<button (click)="dec()">Decrease</button>
+
+<app-vc2 #childView></app-vc2>
+
+
+{{childComp2.counter}}
+
 
 
