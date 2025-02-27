@@ -1,0 +1,33 @@
+<p>photo works!</p>
+
+
+<!-- <pre>{{photos | json}}</pre> -->
+
+<!-- @for (photo of photos; let idx = $index; track idx) {
+    <p>{{photo.caption}}</p>
+    <img [src]="photo.photo_url" height="100px" width="100px">
+} -->
+<div class="container">
+<!-- <div class="row">
+    @for (photo of photos; let idx = $index; track idx) {
+      <div class="col-2">
+        <p>{{photo.caption}}</p>
+        <img [src]="photo.photo_url" class="img-fluid" alt="{{photo.caption}}">
+      </div>
+    }
+  </div> -->
+
+  <div class="row">
+    @for (photo of photos; let idx = $index; track idx) {
+      <div class="col-2 mb-4">
+        <div class="card" style="width: 100%;">
+          <img class="card-img-top" [src]="photo.photo_url" alt="{{photo.caption}}" style="height: 150px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{photo.caption}}</h5>
+           
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

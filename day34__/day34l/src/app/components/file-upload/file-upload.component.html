@@ -1,0 +1,23 @@
+<h1>File Upload</h1>
+
+<hr>
+<br><br>
+
+<input type="file" (change)="handleFileUpload($event)" #fileUpload>
+
+@if (selectedFile) {
+    <section class="file-details">
+
+        <h3>Selected file</h3>
+        <br>
+        <ul>
+            <li>Filename: {{selectedFile?.name}}</li>
+            <li>Type: {{selectedFile?.type}}</li>
+            <li>Filename: {{selectedFile?.size}}</li>
+        </ul>
+
+        <button (click)="uploadFile()">Upload</button>
+    </section>
+}
+
+{{responseString}}
