@@ -1,0 +1,19 @@
+
+
+
+<!-- @if (errorEncountered) {
+    <p class="text-danger"> {{errorMessage}} </p>
+} -->
+
+
+
+@if (errorEncountered) {
+    <p class="text-danger">{{cityName}} {{errorMessage}}</p>
+}
+
+<p> {{weatherForecast.name}} </p>
+
+<p> {{weatherForecast.weather.main}} </p>
+
+<p> {{weatherForecast.weather.description}} </p>
+

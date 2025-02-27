@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'day34ws';
+
+  city:string=''
+
+
+  getCity(value:string) {
+
+    this.city = value;
+  }
 }
