@@ -17,4 +17,8 @@ export class FilesService {
     formData.append('file',file);
     return this.httpClient.post(this.api_url + 'uploadFile',formData);
   }
+
+  fileList() {
+    return this.httpClient.get(this.api_url);
+  }
 }
