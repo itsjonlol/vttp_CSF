@@ -1,0 +1,39 @@
+
+
+
+<div class="container">
+    <h1>Create Employee</h1>
+    <form [formGroup]="form" (submit)="processForm()">
+        
+       <table>
+        
+            <tr>
+                <td><label> First Name:</label></td>
+                <td><input type="text" formControlName="firstName"></td>
+            </tr>
+
+            <tr>
+                <td><label>Last Name:</label></td>
+                <td><input type="text" formControlName="lastName"></td>
+            </tr>
+
+            <tr>
+                <td><label> Email:</label></td>
+                <td><input type="text" formControlName="emailId"></td>
+            </tr>
+            
+            <tr>
+                <td><label>Create employee</label></td>
+                <td><button type="submit"> Submit</button> </td>
+            </tr>
+
+        
+       </table>
+
+
+
+    </form>
+
+
+</div>
+
