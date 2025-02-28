@@ -1,0 +1,10 @@
+<label>Find city</label>
+<input type="text" #cityquery>
+<button (click)="getCity(cityquery.value)">Get</button>
+
+
+{{city}}
+
+@if(city) {
+  <app-weatherforecast [cityName]="city" ></app-weatherforecast>
+}

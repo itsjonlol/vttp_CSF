@@ -1,27 +1,25 @@
-import { Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { WeatherService } from '../../service/weather.service';
-import { WeatherApiResponse, WeatherForecast } from '../../models/models';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { WeatherForecast, WeatherApiResponse } from '../../models/models';
+import { WeatherService } from '../../service/weather.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-weatherforecast',
+  selector: 'app-ws35weatherforecast',
   standalone: false,
-  templateUrl: './weatherforecast.component.html',
-  styleUrl: './weatherforecast.component.css'
+  templateUrl: './ws35weatherforecast.component.html',
+  styleUrl: './ws35weatherforecast.component.css'
 })
-export class WeatherforecastComponent implements OnInit,OnChanges,OnDestroy{
+export class Ws35weatherforecastComponent {
+
+  activatedRoute = inject(ActivatedRoute);
+
+  weatherService = inject(WeatherService);
+
   
- 
-
-  @Input()
-  cityName!:string
-
-  
-
-
-  weatherService = inject(WeatherService)
+  // @Input({required:true})
+  cityName!:string;
 
   errorMessage!: string;
   errorEncountered:boolean = false;
@@ -39,9 +37,13 @@ export class WeatherforecastComponent implements OnInit,OnChanges,OnDestroy{
   };
   
   ngOnInit(): void {
- 
-  
-    
+    //if using query
+    // this.cityName = this.activatedRoute.snapshot.params['city']
+
+    //if using queryparams
+    this.cityName = this.activatedRoute.snapshot.queryParams['cityname']
+
+    console.log(this.cityName)
     this.getWeather()
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -76,5 +78,3 @@ export class WeatherforecastComponent implements OnInit,OnChanges,OnDestroy{
     this.weatherSubscription.unsubscribe();
   }
 }
-
-  

@@ -1,0 +1,20 @@
+<div class="input-group">
+    <span class="input-group-text">City</span>
+    <input type="text" class="form-control" #cityname>
+    <button (click)="getCityName(cityname.value)">Add</button>
+   
+</div>
+
+<br>
+
+<ul class="list-group">
+    @for (city of cities; let idx = $index; track idx) {
+        <!-- <li class="list-group-item">
+            <a [routerLink]="['/weatherforecast',city]">{{city}}</a>    
+        </li> -->
+        <!-- for query params example -->
+        <li class="list-group-item">
+            <a [routerLink]="['/weatherforecast']" [queryParams]="{cityname: city}" >{{city}}</a>    
+        </li>
+    }
+  </ul>
