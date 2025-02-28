@@ -18,11 +18,11 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(this.apiUrl);
   }
 
-  getEmployeeById(id:number | undefined): Observable<Employee> {
+  getEmployeeById(id:number): Observable<Employee> {
     return this.httpClient.get<Employee>(`${this.apiUrl}/${id}`)
   }
 
-  deleteEmployeeById(id:number | undefined):Observable<Object> {
+  deleteEmployeeById(id:number):Observable<Object> {
     return this.httpClient.delete<Object>(`${this.apiUrl}/${id}`)
   }
   
@@ -30,7 +30,7 @@ export class EmployeeService {
     return this.httpClient.post<Employee>(this.apiUrl,employee);
   }
 
-  updateEmployee(id:number,employee:Employee):Observable<Object> {
+  updateEmployeeById(id:number,employee:Employee):Observable<Object> {
     return this.httpClient.put<Employee>(`${this.apiUrl}/${id}`,employee);
   }
 

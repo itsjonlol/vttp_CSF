@@ -11,6 +11,12 @@ import { CreateEmployeeComponent } from './components/employee/create-employee/c
 import { UpdateEmployeeComponent } from './components/employee/update-employee/update-employee.component';
 import { DetailsEmployeeComponent } from './components/employee/details-employee/details-employee.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { RouteGuardService } from './service/route-guard.service';
+import { DeactiveGuardService } from './service/deactive-guard.service';
+import { TestComponent } from './components/test/test.component';
+import { DebounceComponent } from './components/debounce/debounce.component';
+import { JsonexampleComponent } from './components/jsonexample/jsonexample.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +27,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListEmployeeComponent,
     CreateEmployeeComponent,
     UpdateEmployeeComponent,
-    DetailsEmployeeComponent
+    DetailsEmployeeComponent,
+    TestComponent,
+    DebounceComponent,
+    JsonexampleComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(),RouteGuardService,DeactiveGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

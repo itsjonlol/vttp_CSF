@@ -15,9 +15,14 @@ export class EmployeeClass {
 
 
 export interface Employee {
-    id?:number;
+    id:number;
     firstName:string;
     lastName:string;
     emailId:string;
 
+}
+
+export interface Country {
+    name:string;
+    code:string;
 }

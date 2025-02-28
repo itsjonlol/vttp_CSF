@@ -1,0 +1,21 @@
+
+
+<!-- <select>
+    @for (country of countryData; let idx = $index; track idx) {
+        <option [value]="country.name">{{country.name}} ({{country.code}})</option>
+    }
+
+</select> -->
+
+<div class="mb-3">
+    <label for="countrySelect" class="form-label">Select Country</label>
+    <select id="countrySelect" class="form-select">
+        @for (country of countryData; let idx = $index; track idx) {
+            <option [value]="country.name">{{country.name}} ({{country.code}})</option>
+        }
+    </select>
+  </div>
+
+
+
+

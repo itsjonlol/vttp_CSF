@@ -20,6 +20,9 @@ export class ExampleComponent {
     {fname:"Smith",lname:"Will"}
   ])
 
+  numberSeries = from([1,2,3,4,5,6,7,8,9,10])
+
+
   multiplyBy3() {
     this.numbersArray.pipe(
       map( data => {return data*3})
@@ -34,6 +37,11 @@ export class ExampleComponent {
   concatFullName() {
     this.nameArray.pipe(map(data=> {return data.fname + ' ' +data.lname}))
       .subscribe(data =>console.log(data))
+  }
+
+  sumOfNumbers() {
+    this.numberSeries 
+      .pipe()
   }
 
   ngOnInit(): void {

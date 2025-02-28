@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Employee } from '../../../model/models';
 import { EmployeeService } from '../../../service/employee.service';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -18,20 +19,19 @@ export class CreateEmployeeComponent implements OnInit {
 
   employeeService = inject(EmployeeService);
 
+  private router = inject(Router);
+
   @Output()
   formSubmitted = new Subject<boolean>();
 
-  employee:Employee={
-    firstName: '',
-    lastName: '',
-    emailId: ''
-  }
+  employee!:Employee
 
   processForm() {
     this.employee=this.form.value
     // console.log("submitted...")
     this.saveEmployee();
-    this.formSubmitted.next(true);   
+    // this.formSubmitted.next(true);   
+    this.router.navigate(['/employeelist']);
     
   }
 
