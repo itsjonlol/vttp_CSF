@@ -1,0 +1,17 @@
+
+<!-- @for (user of usersFromObservable;let idx = $index; track idx;) {
+    <p>{{user.name}} </p>
+}
+
+@for (username of usernamesFromObservable;let idx=$index; track idx) {
+    <p>{{username}} </p>
+}
+
+@for (user of filteredUsersFromObservable;let idx=$index;track idx) {
+    <p>{{user.name}} </p>
+} -->
+
+
+@for(user of (users$ | async); let idx=$index; track idx) {
+    <div>{{user.name}} </div>
+}

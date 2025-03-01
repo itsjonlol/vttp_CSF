@@ -1,0 +1,30 @@
+<app-notification></app-notification>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+       
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/subject']" [routerLinkActive]="['active']">Subject</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/behaviorsubject']" [routerLinkActive]="['active']">Behavior Subject</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="['active']">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/observables']" [routerLinkActive]="['active']">Observables</a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

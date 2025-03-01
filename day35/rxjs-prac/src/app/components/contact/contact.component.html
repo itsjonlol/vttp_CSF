@@ -1,0 +1,13 @@
+
+
+
+<label>Enter message: </label>
+<input type="text" #notificationmessage>
+<button (click)="sendMessage(notificationmessage.value)">Send message</button>
+
+<br>
+{{currentMessage}}
+
+{{outsideOnInitMessage}}
+
+{{notificationSubject$ | async }}
