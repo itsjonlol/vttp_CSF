@@ -17,6 +17,7 @@ import { DeactiveGuardService } from './service/deactive-guard.service';
 import { TestComponent } from './components/test/test.component';
 import { DebounceComponent } from './components/debounce/debounce.component';
 import { JsonexampleComponent } from './components/jsonexample/jsonexample.component';
+import { RxjsExamplesComponent } from './components/rxjs-examples/rxjs-examples.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { JsonexampleComponent } from './components/jsonexample/jsonexample.compo
     DetailsEmployeeComponent,
     TestComponent,
     DebounceComponent,
-    JsonexampleComponent
+    JsonexampleComponent,
+    RxjsExamplesComponent
   ],
   imports: [
     BrowserModule,

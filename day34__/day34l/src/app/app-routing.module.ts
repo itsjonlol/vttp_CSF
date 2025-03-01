@@ -11,6 +11,7 @@ import { TestComponent } from './components/test/test.component';
 import { DeactiveGuardService } from './service/deactive-guard.service';
 import { DebounceComponent } from './components/debounce/debounce.component';
 import { JsonexampleComponent } from './components/jsonexample/jsonexample.component';
+import { RxjsExamplesComponent } from './components/rxjs-examples/rxjs-examples.component';
 
 
 const routes:Routes =[
@@ -22,6 +23,7 @@ const routes:Routes =[
   {path: 'test',component:TestComponent,canDeactivate:[DeactiveGuardService]},
   {path: 'debounce',component:DebounceComponent},
   {path:'json',component:JsonexampleComponent},
+  {path:'rxjs',component:RxjsExamplesComponent},
   {path:'**',redirectTo:'/',pathMatch:'full'}
 ]
 @NgModule({

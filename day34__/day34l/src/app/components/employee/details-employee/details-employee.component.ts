@@ -12,12 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailsEmployeeComponent implements OnInit{
 
   //set default because initially was reading undefined
-  employee:Employee ={
-    id: 0,
-    firstName: '',
-    lastName: '',
-    emailId: ''
-  }
+ 
+  employee!:Employee;
 
   employeeService = inject(EmployeeService);
 

@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" routerLinkActive='active' routerLink='/employeelist'>Employee List</a>
+            <a class="nav-link active" aria-current="page" routerLinkActive='active' routerLink='/employeelist'>Employee List</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" routerLink="/employeecreate" routerLinkActive='active'>Add Employee</a>
@@ -33,6 +33,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/json" routerLinkActive='active'>Json Example</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/rxjs']" [routerLinkActive]="['active']">RXJS Examples</a>
           </li>
         </ul>
       </div>

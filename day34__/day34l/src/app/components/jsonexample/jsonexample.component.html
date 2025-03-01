@@ -7,14 +7,19 @@
 
 </select> -->
 
+
+<form [formGroup]="form">
 <div class="mb-3">
-    <label for="countrySelect" class="form-label">Select Country</label>
-    <select id="countrySelect" class="form-select">
+    <label for="countrySelect" class="form-label" >Select Country</label>
+    <select id="countrySelect" class="form-select" formControlName="city">
+        <option selected value="" disabled>Open this select menu</option>
         @for (country of countryData; let idx = $index; track idx) {
             <option [value]="country.name">{{country.name}} ({{country.code}})</option>
         }
     </select>
   </div>
+
+</form>
 
 
 
