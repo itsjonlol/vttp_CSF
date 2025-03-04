@@ -22,4 +22,11 @@ export class TextInputComponent {
   handleClick() {
     this.onNewText.next(this.text);
   }
+
+  processValue(text:string) {
+    console.log(text)
+  }
+  fontSizeChanged(event:any) {
+    console.log(event.target.value)
+  }
 }

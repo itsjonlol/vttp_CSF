@@ -35,3 +35,41 @@
 <app-text-input (onNewText)="whenNewText($event)"></app-text-input>
 
 
+<app-fontsize (fontSizeEmitter)="processFontSize($event)"></app-fontsize>
+
+<pre>  {{fontSizeObject | json}} </pre>
+
+
+<input type="text" #cartValue>
+<button (click)="addToCart(cartValue.value)">Add to cart</button>
+
+@if (cart.length>0) {
+  <p> Parent cart: {{cart}}</p>
+} @else {
+ 
+    <p>Cart is empty</p>
+ 
+}
+
+
+<app-cart [cart]="cart"></app-cart>
+
+<hr>
+<h2>Track index</h2>
+@for (user of users; track user.id; let idx = $index, even = $even, odd = $odd) {
+  <p [ngClass]="{ 'even': $even, 'odd': $odd }">Idx: {{ idx }}</p>
+  <p [ngClass]="{ 'even': even, 'odd': odd }">User id: {{ user.id }}</p>
+  <p [ngClass]="{ 'even': even, 'odd': odd }">Username: {{ user.name }}</p>
+}
+
+@for (user of users; track user.id) {
+  @if ($odd || $last) {
+    <p>User id: {{user.id}}</p>
+  <p>Username: {{user.name}}</p>
+  }
+  
+}
+
+{{date}}
+<br>
+{{date | date:'hh:mm aa zzzz'}}

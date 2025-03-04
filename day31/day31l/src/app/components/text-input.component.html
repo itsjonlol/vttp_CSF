@@ -4,3 +4,9 @@
 <input type="text" (keypress)="handleKeyPressed($event)">
 
 <button (click)="handleClick()"> Add to list</button>
+
+<input type="text" #textvalue>
+<button (click)="processValue(textvalue.value)">Send text</button>
+
+
+<br>
