@@ -9,12 +9,27 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MaterialModule } from './material/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Vc2Component } from './components/vc2/vc2.component';
+import { ArraychangesComponent } from './components/arraychanges/arraychanges.component';
+import { ArraychildComponent } from './components/arraychild/arraychild.component';
+import { ContentprojectionComponent } from './components/contentprojection/contentprojection.component';
+import { ContentprojectionchildComponent } from './components/contentprojectionchild/contentprojectionchild.component';
+import { NumInputComponent } from './components/chukexample/num-input.component';
+import { NumListComponent } from './components/chukexample/num-list.component';
+import { ChukexampleComponent } from './components/chukexample/chukexample.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewChildComponent,
-    Vc2Component
+    Vc2Component,
+    ArraychangesComponent,
+    ArraychildComponent,
+    ContentprojectionComponent,
+    ContentprojectionchildComponent,
+    ChukexampleComponent,
+    NumInputComponent,
+    NumListComponent
   ],
   imports: [
     BrowserModule,

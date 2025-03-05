@@ -1,0 +1,8 @@
+<ng-content select=".header" #head></ng-content>
+
+<!-- you can access as viewchild-->
+@for (product of products;let idx = $index;track idx) {
+    <p>{{product.name}} </p>
+}
+
+<ng-content select=".link"></ng-content>
