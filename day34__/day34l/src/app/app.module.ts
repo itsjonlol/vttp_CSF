@@ -18,6 +18,8 @@ import { TestComponent } from './components/test/test.component';
 import { DebounceComponent } from './components/debounce/debounce.component';
 import { JsonexampleComponent } from './components/jsonexample/jsonexample.component';
 import { RxjsExamplesComponent } from './components/rxjs-examples/rxjs-examples.component';
+import { RoutingComponent } from './components/routing/routing.component';
+import { Route2Component } from './components/routing/route2.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { RxjsExamplesComponent } from './components/rxjs-examples/rxjs-examples.
     TestComponent,
     DebounceComponent,
     JsonexampleComponent,
-    RxjsExamplesComponent
+    RxjsExamplesComponent,
+    RoutingComponent,
+    Route2Component
   ],
   imports: [
     BrowserModule,

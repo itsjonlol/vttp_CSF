@@ -12,6 +12,8 @@ import { DeactiveGuardService } from './service/deactive-guard.service';
 import { DebounceComponent } from './components/debounce/debounce.component';
 import { JsonexampleComponent } from './components/jsonexample/jsonexample.component';
 import { RxjsExamplesComponent } from './components/rxjs-examples/rxjs-examples.component';
+import { RoutingComponent } from './components/routing/routing.component';
+import { Route2Component } from './components/routing/route2.component';
 
 
 const routes:Routes =[
@@ -24,7 +26,11 @@ const routes:Routes =[
   {path: 'debounce',component:DebounceComponent},
   {path:'json',component:JsonexampleComponent},
   {path:'rxjs',component:RxjsExamplesComponent},
-  {path:'**',redirectTo:'/',pathMatch:'full'}
+  {path:'routing',component:RoutingComponent},
+  {path:'route2',component:Route2Component},
+  {path:'routing/:id',component:Route2Component},
+  //alternatively, can do to a 404notfoudncomponent
+  {path:'**',redirectTo:'',pathMatch:'full'}
 ]
 @NgModule({
   declarations: [],

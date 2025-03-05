@@ -1,0 +1,8 @@
+<p>routing works!</p>
+
+
+<button class="btn btn-primary" [routerLink]="['/routing',2]">Normal Params Via link</button>
+<button class="btn btn-primary" [routerLink]="['/route2']" [queryParams]="{id:2,name:'bob'}">Query Params Via link</button>
+
+<button (click)="params()">Normal Params via fn</button>
+<button (click)="queryparams()">Query Params via fn</button>
