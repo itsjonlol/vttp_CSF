@@ -37,3 +37,6 @@
 
 </div>
 
+@if (error$ | async; as error) {
+    <p class="text-warning"> {{error}} </p>
+}

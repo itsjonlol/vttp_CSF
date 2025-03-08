@@ -2,8 +2,9 @@ import { Component, inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Employee } from '../../../model/models';
 import { EmployeeService } from '../../../service/employee.service';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { EmployeeStore } from '../../../store/employee.store';
 
 @Component({
   selector: 'app-create-employee',
@@ -26,19 +27,28 @@ export class CreateEmployeeComponent implements OnInit {
 
   employee!:Employee
 
+  employeeStore = inject(EmployeeStore)
+
+  error$:Observable<string|null> = this.employeeStore.error$
+
   processForm() {
     this.employee=this.form.value
     // console.log("submitted...")
     this.saveEmployee();
     // this.formSubmitted.next(true);   
-    this.router.navigate(['/employeelist']);
+    
     
   }
 
   saveEmployee() {
-    this.employeeService.createEmployee(this.employee).subscribe({
-      next: data => console.log(data)
-    })
+    // this.employeeService.createEmployee(this.employee).subscribe({
+    //   next: data => console.log(data)
+    // })
+
+    this.employeeStore.addEmployeeAction(this.employee)
+
+  
+    
     
   }
   ngOnInit(): void {

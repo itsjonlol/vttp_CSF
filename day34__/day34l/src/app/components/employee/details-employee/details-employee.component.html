@@ -11,12 +11,23 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <!-- <tr>
             <td>{{employee?.id}}</td>
             <td>{{employee.firstName}}</td>
             <td> {{employee.lastName}}</td>
             <td> {{employee.emailId}}</td>
-        </tr>
+        </tr> -->
+        @if (employeeViaStore$ | async; as employee) {
+            <tr>
+                <td>{{employee?.id}}</td>
+                <td>{{employee.firstName}}</td>
+                <td> {{employee.lastName}}</td>
+                <td> {{employee.emailId}}</td>
+            </tr>
+        } @else {
+            <p> employee not found</p>
+        }
+        
     </tbody>
 
 </table>

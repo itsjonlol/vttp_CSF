@@ -1,11 +1,26 @@
 
 
 
+<!-- @if (isloading$ | async) {
+    <div class="alert alert-info">Loading employees...</div>
+}
 
 
+@if (error$ | async; as error) {
+    <div class="alert alert-danger">Error: {{ error }}</div>
+} -->
+<ng-container *ngIf="vm$ | async as vm">
 <div class="container">
 
     <h1>List of Employees</h1>
+
+    @if (vm.isLoading) {
+        <div class="alert alert-info">Loading employees...</div> 
+    }
+
+    @if(vm.error) {
+        <div class="alert alert-danger">Error: {{vm.error }}</div>
+    }
    
     <table class="table table-striped table-success">
         <thead>
@@ -18,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (employee of employees; let idx=$index;track idx) {
+            <!-- @for (employee of employees; let idx=$index;track idx) {
                 <tr>
                     <td>{{employee.id}} </td>
                     <td>{{employee.firstName}} </td>
@@ -30,6 +45,21 @@
                         <button (click)="deleteEmployeeById(employee.id)" class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
+            } -->
+
+            @for (employee of vm.employees;let idx=$index; track idx) {
+                <tr>
+                    <td>{{employee.id}} </td>
+                    <td>{{employee.firstName}} </td>
+                    <td> {{employee.lastName}} </td>
+                    <td>{{employee.emailId}} </td>
+                    <td>
+                        <button (click)="getDetails(employee.id)" class="btn btn-primary me-2">Details</button>
+                        <button (click)="updateEmployeeById(employee.id)" class="btn btn-warning me-2">Update</button>
+                        <button (click)="deleteEmployeeById(employee.id)" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                
             }
         </tbody>
     </table>
@@ -38,3 +68,5 @@
 
 
 </div>
+
+</ng-container>

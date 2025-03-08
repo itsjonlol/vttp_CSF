@@ -15,6 +15,7 @@ export class EmployeeService {
   httpClient = inject(HttpClient)
 
   getEmployees():Observable<Employee[]> {
+    console.log("service calling api...")
     return this.httpClient.get<Employee[]>(this.apiUrl);
   }
 
@@ -30,7 +31,7 @@ export class EmployeeService {
     return this.httpClient.post<Employee>(this.apiUrl,employee);
   }
 
-  updateEmployeeById(id:number,employee:Employee):Observable<Object> {
+  updateEmployeeById(id:number,employee:Employee):Observable<Employee> {
     return this.httpClient.put<Employee>(`${this.apiUrl}/${id}`,employee);
   }
 

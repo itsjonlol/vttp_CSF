@@ -2,12 +2,16 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Employee } from '../../../model/models';
 import { EmployeeService } from '../../../service/employee.service';
 import { ActivatedRoute } from '@angular/router';
+import { EmployeeStore } from '../../../store/employee.store';
+import { Observable } from 'rxjs';
+import { provideComponentStore } from '@ngrx/component-store';
 
 @Component({
   selector: 'app-details-employee',
   standalone: false,
   templateUrl: './details-employee.component.html',
-  styleUrl: './details-employee.component.css'
+  styleUrl: './details-employee.component.css',
+  providers:[provideComponentStore(EmployeeStore)]
 })
 export class DetailsEmployeeComponent implements OnInit{
 
@@ -19,12 +23,18 @@ export class DetailsEmployeeComponent implements OnInit{
 
   activatedRoute = inject(ActivatedRoute);
 
+  employeeStore = inject(EmployeeStore);
+  employeeViaStore$!: Observable<Employee | undefined>
+
   id!:number
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.params['id'];
-    this.getEmployeeDetails();
-
+    this.activatedRoute.params.subscribe(params => {
+      this.id = parseInt(params['id']); 
+      console.log('Employee ID from route:', this.id);
+      // this.getEmployeeDetails()
+      this.employeeViaStore$ = this.employeeStore.getEmployeeById(this.id);
+    });
   }
 
   getEmployeeDetails() {

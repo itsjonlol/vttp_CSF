@@ -10,8 +10,10 @@ export class RouteGuardService implements CanActivate{
 
   constructor() { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
-    alert('You are not allowed to access this page as it is undergoing developmenet');
+    // alert('You are not allowed to access this page as it is undergoing developmenet');
     // this.router.navigate(['']);
-    return false;
+
+    //by right put false
+    return true;
   }
 }
