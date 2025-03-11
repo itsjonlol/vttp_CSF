@@ -23,6 +23,13 @@ export class CityStore extends ComponentStore<CityState>{
     readonly setLoading = this.updater((state,loading:boolean)=>({...state,loading}));//optional
     //effects
     // Effects -> changes to the state
+
+    /*
+    - liveQuery listens for changes in IndexedDB.
+	•	If a new city is added, updated, or deleted, the effect automatically re-fetches the latest data.
+
+    */
+
     readonly loadCities = this.effect((trigger$: Observable<void>) =>
         trigger$.pipe(
             tap(() => this.setLoading(true)),
