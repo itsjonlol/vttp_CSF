@@ -5,6 +5,10 @@
     <input type="text" formControlName="comments" placeholder="comments">
     <button (click)="upload()">Upload</button>
 
-
+    <label>Select a city</label>
+    <select [(value)]="selectedCity">
+        <option *ngFor="let c of citiesList$ | async" [value]="c.code"> {{c.city_name}}</option>
+        
+    </select>
 
 </form>

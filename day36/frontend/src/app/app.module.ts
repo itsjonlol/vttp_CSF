@@ -8,12 +8,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { UploadComponent } from './components/upload/upload.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewImageComponent } from './components/view-image/view-image.component';
+import { CartdbComponent } from './components/cartdb/cartdb.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadComponent,
-    ViewImageComponent
+    ViewImageComponent,
+    CartdbComponent
   ],
   imports: [
     BrowserModule,

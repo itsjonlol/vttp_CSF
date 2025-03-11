@@ -2,6 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UploadService } from '../../service/upload.service';
+import { CityStore } from '../store/city.store';
+import { City } from '../models/upload-result';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-upload',
@@ -16,6 +19,12 @@ export class UploadComponent implements OnInit{
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private fileUploadService = inject(UploadService)
+  private cityStore = inject(CityStore); // comes from indexdb
+
+  citiesList$!: Observable<City[]>
+
+  selectedCity!: string;
+  selectedCityName?:string;
 
   dataUri!:string;
   blob!:Blob;
@@ -23,9 +32,26 @@ export class UploadComponent implements OnInit{
 
   ngOnInit(): void {
     this.form = this.createForm();
+    this.loadCities();
+  }
+
+  loadCities() {
+    //calls the store
+    this.citiesList$! = this.cityStore.cities$;
+    this.cityStore.loadCities();
+
   }
 
   upload(){
+
+    this.citiesList$.subscribe((cities)=>{
+      const city = cities.find((city)=> city.code === this.selectedCity);
+      console.log(city?.city_name)
+      this.selectedCityName = city?.city_name;
+    })
+
+
+
     if (!this.dataUri) {
       console.log("no datauri")
       return;
