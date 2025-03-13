@@ -1,0 +1,36 @@
+<app-task></app-task>
+<app-task-count></app-task-count>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Priority</th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (tasks$ |async; as tasks) {
+            @for (task of tasks; let idx=$index; track idx) {
+                <tr>
+                    <td> {{task.id}} </td>
+                    <td> {{task.name}} </td>
+                    <td>{{task.priority}}  </td>
+                    <td>
+                        <button class="btn btn-warning" (click)="deleteTask(task.id)">Delete </button>
+                    </td>
+                </tr>
+        
+            }
+            @empty {
+                empty
+            }
+        } 
+
+    </tbody>
+
+
+
+</table>
+
+<!-- <pre>{{tasks | json}} </pre> -->
