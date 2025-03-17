@@ -63,8 +63,8 @@ CREATE TABLE cart (
 
 );
 
--- Grant fred access to the database
-GRANT ALL PRIVILEGES ON mock1.* TO 'fred'@'%';
+-- -- Grant fred access to the database
+-- GRANT ALL PRIVILEGES ON mock1.* TO 'fred'@'%';
 
--- Apply changes to privileges
-FLUSH PRIVILEGES;
+-- -- Apply changes to privileges
+-- FLUSH PRIVILEGES;
