@@ -1,0 +1,74 @@
+{{form.value | json}}
+
+<form class="p-4 border rounded shadow-sm" [formGroup]="form">
+    <div class="mb-3">
+      <label for="email" class="form-label">Name</label>
+      <input type="text" id="email" class="form-control" placeholder="Enter your name" formControlName="name">
+      @if (hasError('name','required')) {<p class="text-danger">Name is required</p>}
+      @if (hasError('name','minlength')) {<p class="text-danger">Min length of 5</p>}
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">DOB</label>
+        <input type="date" id="email" class="form-control" formControlName="dob">
+        <!-- @if (hasError('dob')) {<p class="text-danger">Date of Birth wrong</p>} -->
+        @if (hasError('dob','futureDate')) {<p class="text-danger">Date of Birth wrong</p>}
+        @if (form.controls['dob'].hasError('futureDate')) {
+            <p class="text-danger">Date cannot be in the future!</p>
+        }
+        @if (hasError('dob','invalidAge')) {<p class="text-danger">Must be over 18 to sign up</p>}
+        
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Priority</label>
+        <input type="checkbox" id="email" class="form-check-input" formControlName="priority" (change)="checkPriority($event)">
+      </div>
+
+      @if(toggleTiming) {
+        <div class="mb-3">
+            <label for="email" class="form-label">am</label>
+            <input type="checkbox" id="email" class="form-check-input" formControlName="am">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">pm</label>
+            <input type="checkbox" id="email" class="form-check-input" formControlName="pm">
+          </div>
+
+      }
+     
+
+      
+
+    <button (click)="addCollaborator()"> Add collaboraters</button>
+
+  
+    
+  <!-- cannot just [disabled] = "this.form.invalid" => you have other conditions making them invalid -->
+    <button type="submit" class="btn btn-primary" [disabled]="isInvalid()">Submit</button>
+
+
+
+    <h2>Collaborators</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody formArrayName="collaborators"> <!-- loop through the form array-->
+            @for ( col of collaborators.controls;let idx = $index; track col) {
+                <tr [formGroupName]="idx">
+                    <td><input type="text" formControlName="namef"></td>
+                    <br>
+                    
+                    <td><input type="text" formControlName="email"></td>
+           
+                    <td><button type="button" (click)="removeCollaborator(idx)">Remove item</button></td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+  </form>

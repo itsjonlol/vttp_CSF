@@ -1,0 +1,5 @@
+<app-createform (sendTaskToParent)="handleTask($event)"></app-createform>
+
+<app-showtasks [tasks]="tasks" (emitDeleteTask)="handleDeleteTask($event)"
+(emitCompleteTask)="handleCompleteTask($event)"
+></app-showtasks>
