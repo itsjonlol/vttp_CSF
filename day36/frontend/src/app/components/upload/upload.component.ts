@@ -29,6 +29,7 @@ export class UploadComponent implements OnInit{
   dataUri!:string;
   blob!:Blob;
   
+  file!:File;
 
   ngOnInit(): void {
     this.form = this.createForm();
@@ -61,7 +62,15 @@ export class UploadComponent implements OnInit{
     this.blob = this.dataURItoBlob(this.dataUri);
     console.log(this.blob);
     const formVal = this.form.value;
-    this.fileUploadService.upload(formVal, this.blob)
+    // this.fileUploadService.upload(formVal, this.blob)
+    //   .then((result)=>{
+    //     this.router.navigate(['/image',result.postId]);
+    //   }).catch(error=> console.log(error))
+
+    //OR CAN USE UPLOAD2
+    //JUST ENSURE THAT ITS FINAL FILE NAME IN THE S3SERVICE IS CONFIGURED PROPERLY
+
+    this.fileUploadService.upload(formVal, this.file)
       .then((result)=>{
         this.router.navigate(['/image',result.postId]);
       }).catch(error=> console.log(error))
@@ -72,12 +81,18 @@ export class UploadComponent implements OnInit{
     const input = event.target as HTMLInputElement;
     if(input.files && input.files.length > 0){
       const file = input.files[0];
+
+      this.file = file;
+
       console.log(file);
       const reader = new FileReader();
       reader.onload = () => {
         this.dataUri = reader.result as string;
       };
       reader.readAsDataURL(file);
+
+
+      
     }
 
   }

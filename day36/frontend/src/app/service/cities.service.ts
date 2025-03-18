@@ -12,6 +12,7 @@ export class CitiesService {
   constructor() { }
 
   getCities() {// why need to convert it into a promise?
-    return lastValueFrom(this.httpClient.get<City[]>('/api/cities'))
+    return lastValueFrom(this.httpClient.get<City[]>('http://localhost:8080/api/cities'))
+    // return lastValueFrom(this.httpClient.get<City[]>('/api/cities'))
   }
 }
