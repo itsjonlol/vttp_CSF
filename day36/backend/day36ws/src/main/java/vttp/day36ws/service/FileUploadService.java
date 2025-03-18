@@ -21,6 +21,10 @@ public class FileUploadService {
         return fileUploadRepo.upload(file, comments);
     }
 
+    public String uploadFile2(MultipartFile file,String comments) throws SQLException,IOException {
+        return fileUploadRepo.upload2(file,comments);
+    }
+
     public Optional<Post> getPostById(String postId) throws SQLException{
         return fileUploadRepo.getPostById(postId);
 

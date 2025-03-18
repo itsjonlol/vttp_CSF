@@ -41,14 +41,18 @@ public class FileUploadController {
         
         String postId;
 
-        try {
+        try{
             postId = fileUploadService.uploadFile(file, comments);
-            // if (postId != null &&  !postId.isEmpty()) {
-            //     String s3EndPointUrl = this.
-            // }
-
-        } catch (SQLException | IOException ex) {
-            return ResponseEntity.badRequest().body(ex.getMessage());
+            System.out.println("Post ID: " + postId);
+            if(postId != null && !postId.isEmpty()){
+                System.out.println("Post ID: " + postId);
+                String s3EndpointUrl = this
+                                    .s3Service.upload(file, comments, postId);
+                System.out.println(s3EndpointUrl);
+            }
+        }catch(SQLException | IOException e){
+            return ResponseEntity
+                        .badRequest().body(e.getMessage());
         }
         Map<String,Object> response = new HashMap<>();
         response.put("postId",postId);
@@ -60,6 +64,39 @@ public class FileUploadController {
         return ResponseEntity.ok(response);
        
     }
+
+    @PostMapping(path="/upload2",consumes=MediaType.MULTIPART_FORM_DATA_VALUE,
+    produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> upload2(@RequestPart("file") MultipartFile file, @RequestPart("comments") String comments) {
+        
+        String postId;
+        System.out.println(comments);
+        try{
+            postId = fileUploadService.uploadFile(file, comments);
+            System.out.println("Post ID: " + postId);
+            if(postId != null && !postId.isEmpty()){
+                System.out.println("Post ID: " + postId);
+                String s3EndpointUrl = this
+                                    .s3Service.upload(file, comments, postId);
+                System.out.println(s3EndpointUrl);
+            }
+        }catch(SQLException | IOException e){
+            return ResponseEntity
+                        .badRequest().body(e.getMessage());
+        }
+        Map<String,Object> response = new HashMap<>();
+        response.put("postId",postId);
+
+        // JsonObject responseObject = Json.createObjectBuilder()
+        //     .add("postId",postId)
+        //     .build();
+
+        return ResponseEntity.ok(response);
+       
+    }
+
+
+
     @GetMapping(path="/posts/{postId}")
     public ResponseEntity<?> getPostById(@PathVariable("postId") String postId) throws SQLException {
         Optional<Post> opt = fileUploadService.getPostById(postId);
@@ -81,6 +118,10 @@ public class FileUploadController {
         response.put("comments",post.getComments());
         return ResponseEntity.ok(response);
 
+    }
+    @GetMapping("/{bucket}/{fileName}")
+    public ResponseEntity<byte[]> getFile(@PathVariable String bucket, @PathVariable String fileName) {
+        return s3Service.downloadFile(bucket, fileName);
     }
     
 }

@@ -1,6 +1,7 @@
 package vttp.day36ws.repo;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,6 +23,9 @@ public class FileUploadRepo {
     public static final String SELECT_POSTS = 
         "SELECT post_id, comments, picture FROM posts where post_id = ?";
 
+    public static final String INSERT_POSTS2 ="INSERT INTO posts (post_id, comments, picture) VALUES (?, ?, ?)";
+
+
     @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -38,6 +42,30 @@ public class FileUploadRepo {
                 ps.setString(2, comments);
                 ps.setBytes(3, filesBytes);
             });
+        } catch (IOException e) {
+            throw new RuntimeException("Error while uploading file");
+        }
+        
+
+        return postId;
+    }
+
+    public String upload2(MultipartFile file,String comments) {
+        String postId = UUID.randomUUID()
+            .toString()
+            .replace("-","")
+            .substring(0,8);
+
+        try {
+            // byte[] filesBytes = file.getBytes();
+            // jdbcTemplate.update(INSERT_POSTS2,ps -> {
+            //     ps.setString(1, postId);
+            //     ps.setString(2, comments);
+            //     ps.setBytes(3, filesBytes);
+            // });
+            InputStream is = file.getInputStream();
+            jdbcTemplate.update(INSERT_POSTS2,postId,comments,is);
+           
         } catch (IOException e) {
             throw new RuntimeException("Error while uploading file");
         }
