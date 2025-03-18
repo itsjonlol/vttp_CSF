@@ -20,6 +20,7 @@ import { JsonexampleComponent } from './components/jsonexample/jsonexample.compo
 import { RxjsExamplesComponent } from './components/rxjs-examples/rxjs-examples.component';
 import { RoutingComponent } from './components/routing/routing.component';
 import { Route2Component } from './components/routing/route2.component';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { Route2Component } from './components/routing/route2.component';
     JsonexampleComponent,
     RxjsExamplesComponent,
     RoutingComponent,
-    Route2Component
+    Route2Component,
+    FormComponent
   ],
   imports: [
     BrowserModule,
