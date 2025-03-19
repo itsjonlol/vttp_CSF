@@ -115,3 +115,85 @@ export class MyCartDB extends Dexie {
 }
 
 export const cartDB = new MyCartDB();
+
+
+// // ✅ Add a cart (Returns Observable)
+// addCart(cart: Cart): Observable<void> {
+//   return from(this.cart.add(cart));
+// }
+
+// // ✅ Bulk Add carts (Returns Observable)
+// bulkAddCart(newCarts: Cart[]): Observable<void> {
+//   return from(this.cart.bulkAdd(newCarts));
+// }
+
+// // ✅ Bulk Put carts (Returns Observable)
+// bulkPutCart(newCarts: Cart[]): Observable<void> {
+//   return from(this.cart.bulkPut(newCarts));
+// }
+
+// // ✅ Clear all carts (Returns Observable)
+// clearCart(): Observable<void> {
+//   return from(this.cart.clear());
+// }
+
+// // ✅ Get a Cart by ID (Returns Observable<Cart | undefined>)
+// getCartById(cartId: number): Observable<Cart | undefined> {
+//   return from(this.cart.get(cartId));
+// }
+
+// // ✅ Get all carts (Returns an Observable that updates when the DB changes)
+// getAllCarts(): Observable<Cart[]> {
+//   return new Observable(subscriber => {
+//     const query = liveQuery(() => this.cart.toArray());
+//     const subscription = query.subscribe({
+//       next: carts => subscriber.next(carts),
+//       error: err => subscriber.error(err),
+//     });
+//     return () => subscription.unsubscribe(); // Cleanup
+//   });
+// }
+
+// // ✅ Update a cart (Returns Observable)
+// updateCart(cartId: number, updatedCart: Partial<Cart>): Observable<void> {
+//   return from(this.cart.update(cartId, updatedCart));
+// }
+
+// // ✅ Delete a cart by ID (Returns Observable)
+// deleteCart(cartId: number): Observable<void> {
+//   return from(this.cart.delete(cartId));
+// }
+
+// // ✅ Filter carts by date (Returns Observable)
+// filterCartsByDate(yesterday: number): Observable<Cart[]> {
+//   return from(this.cart.filter(c => c.date > yesterday).toArray());
+// }
+
+// // ✅ Filter carts by username (Returns Observable)
+// filterCartsByUsername(username: string): Observable<Cart[]> {
+//   return from(this.cart.where('username').equals(username).toArray());
+// }
+
+// // ✅ Filter carts by username AND date (Returns Observable)
+// filterCartsByUsernameAndDate(username: string, yesterday: number): Observable<Cart[]> {
+//   return from(
+//     this.cart
+//       .where('username')
+//       .equals(username)
+//       .and(c => c.date > yesterday)
+//       .toArray()
+//   );
+// }
+
+// // ✅ Process carts by username AND date (Returns Observable<void>)
+// processCartsByUsernameAndDate(username: string, yesterday: number, callback: (cart: Cart) => void): Observable<void> {
+//   return from(
+//     this.cart
+//       .where('username')
+//       .equals(username)
+//       .and(c => c.date > yesterday)
+//       .each(cart => {
+//         callback(cart);
+//       })
+//   );
+// }
