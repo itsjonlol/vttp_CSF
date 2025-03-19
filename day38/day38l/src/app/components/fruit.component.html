@@ -1,0 +1,20 @@
+<pre>{{form.value | json}} </pre>
+
+
+<form [formGroup]="form" (submit)="processForm()"> 
+
+    <input type="text" formControlName="name">
+    <button type="submit">Submit</button>
+
+</form>
+
+
+
+
+{{fruits$ | async | json}}
+
+<button (click)="delete()"> Delete</button>
+
+<h1>Fruits from dexie</h1>
+
+<pre>{{fruits | json}} </pre>
