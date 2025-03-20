@@ -61,5 +61,6 @@ export class FruitComponent implements OnInit{
 
     // observable way
     this.fruitDb.removeFruit3('apple');
+    this.fruitDb.fruits.clear()
   }
 }
