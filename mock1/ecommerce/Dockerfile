@@ -43,8 +43,6 @@ FROM openjdk:23
 WORKDIR /app
 
 COPY --from=javabuild /server/target/ecommerce-0.0.1-SNAPSHOT.jar app.jar
-COPY mock1/data/products.csv /app/data/products.csv
-
 
 ENV PORT=8080
 
